@@ -1,0 +1,135 @@
+<!--
+
+The Odin Project instructions
+
+# create a function called computerPlay that randomly returns "Rock", "Paper" or "Scissors"
+	# the function picks a random value from an array which contains rock paper scissors
+	# create variable for computerSelection, which is going to be taken from the function computerPlay
+
+# create variable for playerSelection, which is going to be an input
+
+
+# create a function called playRound that plays a single round of the game, and takes two parameters: playerSelection and computerSelection
+	# this function should return a string that declares the winner: "You lose! Paper beats Rock"
+	# this function compares the variables playerSelection and computerSelection for all three cases, player victory, tie or loss
+
+# display the return of the playRound function using the console.log()
+
+# create a new function called game() which plays a 5 round game
+# this function keeps the score
+# and returns the winner at the end
+
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Rock Paper Scissors</title>
+</head>
+<body>
+
+
+<!--
+
+repeat 5 times
+
+{ ask the user for his choice
+
+assign a random choice for the computer
+
+
+play a round
+
+update the score of the winner
+
+declare the winner for that round ("you win! rock beats scissors. etc") }
+
+
+after 5 rounds ( when roundCounter === 6) { declare the winner (user, computer or tie, depening on the comparison of their scores)}
+
+-->
+
+<script type="text/javascript">
+	
+
+	function game() {
+
+		var roundCounter = 1;
+		var playerScore = 0;
+		var computerScore = 0;
+
+		while (roundCounter < 6) { 
+
+			var playerChoice = prompt("what is your choice?");           // user will be asked 5 times for his choice
+			var playerSelection = playerChoice.toLowerCase();		    // user's string is converted to all lowercase
+			var computerSelection = computerPlay();
+
+			function computerPlay() {
+					
+				var choicesArray = ["rock", "paper", "scissors"];
+
+				var randomChoice = Math.floor(Math.random() * choicesArray.length);      // computer will have his choice assigned randomly 5 times
+
+				return (choicesArray[randomChoice]); 		
+			}
+
+
+			function playRound(playerSelection, computerSelection) {  // this function plays a single round between the player and computer choices
+
+
+					// all winning combinations
+					if ((playerSelection === "rock" && computerSelection === "scissors") || (playerSelection === "scissors" && computerSelection === "paper") || (playerSelection === "paper" && computerSelection === "rock")) {
+						
+						playerScore++;
+						var victory = ("You win! " + playerSelection + " beats " + computerSelection);
+						return(victory);  // if player wins his playerScore is incremented and he gets a victory message
+
+					}
+
+					// all tie combinations
+					if ((playerSelection === "rock" && computerSelection === "rock") || (playerSelection === "scissors" && computerSelection === "scissors") || (playerSelection === "paper" && computerSelection === "paper")) {
+						
+						return ("Tie!"); // if the score is tie the score variables are left untouched
+
+					}
+
+					// all losing combinations
+					if ((playerSelection === "rock" && computerSelection === "paper") || (playerSelection === "scissors" && computerSelection === "rock") || (playerSelection === "paper" && computerSelection === "scissors")) {
+						
+						computerScore++;
+						var loss = ("You lose! " + playerSelection + " loses to " + computerSelection);
+						return (loss);  // if computer wins the computerScore is incremented and player gets a loss message
+
+					}
+				}
+
+
+		console.log("Round " + roundCounter); // writes the rounds in the console
+		console.log(playRound(playerSelection, computerSelection));  // writes the return of the playRound function which is either victory, loss or tie
+		roundCounter++;  // round is incremented at the end and the loop starts again
+
+
+
+		}
+
+		if (playerScore > computerScore) {
+
+			console.log("Match winner is player!");                 // player's score is compared with computer
+		} else if (playerScore < computerScore) {
+
+			console.log("Match winner is computer!");
+		} else if (playerScore === computerScore) {
+			console.log("Match is tie!");
+		}
+
+	}
+
+
+game();
+
+</script>
+
+
+
+</body>
+</html>
