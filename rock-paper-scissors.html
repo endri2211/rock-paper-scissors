@@ -81,7 +81,7 @@ after 5 rounds ( when roundCounter === 6) { declare the winner (user, computer o
 					if ((playerSelection === "rock" && computerSelection === "scissors") || (playerSelection === "scissors" && computerSelection === "paper") || (playerSelection === "paper" && computerSelection === "rock")) {
 						
 						playerScore++;
-						var victory = ("You win! " + playerSelection + " beats " + computerSelection);
+						var victory = ("Player wins! " + playerSelection + " beats " + computerSelection);
 						return(victory);  // if player wins his playerScore is incremented and he gets a victory message
 
 					}
@@ -97,7 +97,7 @@ after 5 rounds ( when roundCounter === 6) { declare the winner (user, computer o
 					if ((playerSelection === "rock" && computerSelection === "paper") || (playerSelection === "scissors" && computerSelection === "rock") || (playerSelection === "paper" && computerSelection === "scissors")) {
 						
 						computerScore++;
-						var loss = ("You lose! " + playerSelection + " loses to " + computerSelection);
+						var loss = ("Computer wins! " + playerSelection + " loses to " + computerSelection);
 						return (loss);  // if computer wins the computerScore is incremented and player gets a loss message
 
 					}
